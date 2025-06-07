@@ -1,6 +1,6 @@
 /* General Styling */
 :root {
-    --primary-color: #007BFF; /* A vibrant blue */
+    --primary-color: #007BFF; /* Vibrant blue */
     --secondary-color: #6C757D; /* Muted gray */
     --accent-color: #28A745; /* Green for highlights */
     --dark-bg: #212529; /* Dark background */
@@ -51,6 +51,8 @@ section {
     padding: 60px 20px;
     margin: 0 auto;
     max-width: 1200px;
+    position: relative; /* For scroll animations */
+    z-index: 5;
 }
 
 /* Buttons */
@@ -105,24 +107,53 @@ section {
     overflow: hidden;
 }
 
-#hero::before { /* Background animation element */
-    content: '';
+#hero-canvas {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" fill="rgba(255,255,255,0.1)"><circle cx="10" cy="10" r="2" /><circle cx="50" cy="50" r="2" /><circle cx="90" cy="90" r="2" /></svg>');
-    background-size: 200px 200px;
-    animation: moveBackground 30s linear infinite;
-    opacity: 0.3;
+    z-index: 1; /* Behind other hero content but allows interaction */
 }
 
-@keyframes moveBackground {
-    from { background-position: 0 0; }
-    to { background-position: 200px 200px; }
+.hero-content {
+    position: relative;
+    z-index: 2; /* On top of the canvas */
+    animation: fadeInScale 1s ease-out forwards;
+    padding: 20px;
 }
 
+.hero-content h1 {
+    color: var(--light-text);
+    margin-bottom: 10px;
+}
+
+.hero-content .tagline {
+    font-size: 1.4rem;
+    margin-bottom: 30px;
+    opacity: 0; /* Animated by JS */
+}
+
+.social-links {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.social-links a {
+    color: var(--light-text);
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: transform 0.3s ease;
+}
+
+.social-links a:hover {
+    transform: translateY(-5px);
+    color: var(--accent-color);
+}
 
 nav {
     position: fixed;
@@ -177,44 +208,6 @@ nav ul li a::after {
 
 nav ul li a:hover::after {
     width: 100%;
-}
-
-.hero-content {
-    animation: fadeInScale 1s ease-out forwards;
-    padding: 20px;
-}
-
-.hero-content h1 {
-    color: var(--light-text);
-    margin-bottom: 10px;
-}
-
-.hero-content .tagline {
-    font-size: 1.4rem;
-    margin-bottom: 30px;
-    opacity: 0; /* Animated */
-    animation: fadeIn 1s ease-out 0.5s forwards;
-}
-
-.social-links {
-    margin-top: 20px;
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-}
-
-.social-links a {
-    color: var(--light-text);
-    font-size: 1.2rem;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    transition: transform 0.3s ease;
-}
-
-.social-links a:hover {
-    transform: translateY(-5px);
-    color: var(--accent-color);
 }
 
 
@@ -279,6 +272,9 @@ nav ul li a:hover::after {
     margin-bottom: 30px;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     border-left: 5px solid var(--primary-color);
+    /* GSAP controlled opacity and transform */
+    opacity: 0;
+    transform: translateY(50px);
 }
 
 .job-card:hover, .education-card:hover {
@@ -323,53 +319,51 @@ nav ul li a:hover::after {
 }
 
 /* Skills Section */
-.skills-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 30px;
-}
-
-.skill-category {
-    background-color: var(--card-bg);
-    padding: 25px;
+#d3-skills-visualization {
+    width: 100%;
+    min-height: 500px; /* Minimum height for the viz */
+    background-color: #212529; /* Dark background for D3 viz */
     border-radius: var(--border-radius);
     box-shadow: var(--shadow);
-    text-align: center;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.skill-category:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
-}
-
-.skill-category h3 {
-    color: var(--accent-color);
-    margin-bottom: 15px;
-}
-
-.skill-category ul {
     display: flex;
-    flex-wrap: wrap;
     justify-content: center;
-    gap: 10px;
+    align-items: center;
+    margin-top: 30px;
+    position: relative; /* For responsiveness */
+    overflow: hidden; /* Hide overflow from D3 nodes */
 }
 
-.skill-category li {
-    background-color: #E2F0FF;
-    color: var(--primary-color);
-    padding: 8px 15px;
-    border-radius: 20px;
+#d3-skills-visualization svg {
+    width: 100%;
+    height: 100%;
+}
+
+.skills-note {
+    text-align: center;
+    margin-top: 20px;
     font-size: 0.9rem;
-    font-weight: 600;
-    transition: background-color 0.3s ease, transform 0.2s ease;
+    color: #666;
 }
 
-.skill-category li:hover {
-    background-color: var(--primary-color);
-    color: var(--light-text);
-    transform: scale(1.05);
+/* D3 Node styles */
+#d3-skills-visualization circle {
+    cursor: grab;
+    transition: fill 0.2s ease, r 0.2s ease;
 }
+
+#d3-skills-visualization circle:hover {
+    cursor: grabbing;
+    stroke: #fff !important;
+    stroke-width: 2px !important;
+}
+#d3-skills-visualization text {
+    fill: white;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    pointer-events: none; /* Allows mouse events to pass through to circle */
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+}
+
 
 /* Projects Section */
 .project-grid {
@@ -388,6 +382,9 @@ nav ul li a:hover::after {
     flex-direction: column;
     justify-content: space-between;
     border-top: 5px solid var(--primary-color);
+    /* GSAP controlled opacity and transform */
+    opacity: 0;
+    transform: translateY(50px);
 }
 
 .project-card:hover {
@@ -444,29 +441,13 @@ footer {
     font-size: 0.9rem;
 }
 
-/* Animations (JavaScript controlled) */
-.fade-in {
+/* GSAP Controlled Animations */
+.gsap-fade-in {
     opacity: 0;
     transform: translateY(20px);
-    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
 }
 
-.fade-in.appear {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-.slide-up {
-    opacity: 0;
-    transform: translateY(50px);
-    transition: opacity 1s ease-out, transform 1s ease-out;
-}
-
-.slide-up.appear {
-    opacity: 1;
-    transform: translateY(0);
-}
-
+/* Keyframe for Hero content initial reveal */
 @keyframes fadeInScale {
     from {
         opacity: 0;
@@ -476,11 +457,6 @@ footer {
         opacity: 1;
         transform: scale(1);
     }
-}
-
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
 }
 
 /* Responsive Design */
@@ -515,7 +491,7 @@ footer {
         margin-bottom: 20px;
     }
 
-    .skills-grid, .project-grid {
+    .project-grid {
         grid-template-columns: 1fr;
     }
 }

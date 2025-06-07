@@ -7,10 +7,16 @@
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/ScrollTrigger.min.js"></script>
+
 </head>
 <body>
     <header id="hero">
-        <nav>
+        <canvas id="hero-canvas"></canvas> <nav>
             <div class="logo">Karthik B.</div>
             <ul>
                 <li><a href="#about">About</a></li>
@@ -22,7 +28,7 @@
         </nav>
         <div class="hero-content">
             <h1>Mohana Koundinya Karthik</h1>
-            <p class="tagline">Full Stack Developer | [span_0](start_span)Crafting seamless web experiences with MEAN/MERN[span_0](end_span)</p>
+            <p class="tagline">Full Stack Developer | Crafting seamless web experiences with MEAN/MERN</p>
             <div class="social-links">
                 <a href="https://www.linkedin.com/in/karthikbalabhadrapatruni" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
                 <a href="mailto:karthik.bmkl@gmail.com"><i class="fas fa-envelope"></i> Email</a>
@@ -33,148 +39,104 @@
     </header>
 
     <main>
-        <section id="about" class="fade-in">
+        <section id="about" class="gsap-fade-in">
             <h2>About Me</h2>
             <div class="about-content">
                 <div class="profile-image">
                     <img src="your-profile-picture.jpg" alt="Mohana Koundinya Karthik">
                 </div>
                 <div class="bio">
-                    [span_1](start_span)<p>A passionate Full Stack (MEAN/MERN) Developer with 3+ years of hands-on experience in developing robust web applications.[span_1](end_span) [span_2](start_span)I possess a strong understanding of both front-end and back-end development, enabling me to build comprehensive and efficient solutions.[span_2](end_span)</p>
-                    [span_3](start_span)<p>Skilled in Agile methodologies, I thrive in collaborative, cross-functional team environments.[span_3](end_span) [span_4](start_span)I am committed to continuous learning and staying updated with the latest technologies to deliver cutting-edge solutions.[span_4](end_span)</p>
+                    <p>A passionate Full Stack (MEAN/MERN) Developer with 3+ years of hands-on experience in developing robust web applications. [span_0](start_span)[span_1](start_span)I possess a strong understanding of both front-end and back-end development, enabling me to build comprehensive and efficient solutions[span_0](end_span)[span_1](end_span).</p>
+                    <p>Skilled in Agile methodologies, I thrive in collaborative, cross-functional team environments. [span_2](start_span)[span_3](start_span)I am committed to continuous learning and staying updated with the latest technologies to deliver cutting-edge solutions[span_2](end_span)[span_3](end_span).</p>
                 </div>
             </div>
         </section>
 
-        <section id="experience" class="slide-up">
+        <section id="experience">
             <h2>Experience</h2>
-
             <div class="job-card">
                 <h3>Specialist Programmer</h3>
                 <p class="company">Infosys Ltd.</p>
-                [span_5](start_span)<p class="dates">Jan 2022 - Present[span_5](end_span)</p>
+                [span_4](start_span)[span_5](start_span)<p class="dates">Jan 2022 - Present[span_4](end_span)[span_5](end_span)</p>
                 <ul>
-                    [span_6](start_span)<li>Led a team of 5 in Agile development, ensuring efficient project management.[span_6](end_span)</li>
-                    [span_7](start_span)<li>Developed app marketplaces, responsible for both front-end and back-end development.[span_7](end_span)</li>
-                    [span_8](start_span)<li>Implemented micro-frontend architecture for the front end and microservice architecture for the backend.[span_8](end_span)</li>
-                    [span_9](start_span)<li>Streamlined App Submission, App Approval, and App Publishing workflows.[span_9](end_span)</li>
-                    [span_10](start_span)<li>Contributed to a no-code/low-code platform in developing a panel to configure draggable elements and their properties.[span_10](end_span)</li>
-                    [span_11](start_span)<li>Designed and implemented the approach to integrate individual blocks into the page, which are already designed using the platform.[span_11](end_span)</li>
-                    [span_12](start_span)<li>Received Multiple awards for exceptional contribution to the platform development.[span_12](end_span)</li>
+                    [span_6](start_span)[span_7](start_span)<li>Led a team of 5 in Agile development, ensuring efficient project management[span_6](end_span)[span_7](end_span).</li>
+                    [span_8](start_span)[span_9](start_span)<li>Developed app marketplaces, responsible for both front-end and back-end development[span_8](end_span)[span_9](end_span).</li>
+                    [span_10](start_span)[span_11](start_span)<li>Implemented micro-frontend architecture for the front end and microservice architecture for the backend[span_10](end_span)[span_11](end_span).</li>
+                    [span_12](start_span)[span_13](start_span)<li>Streamlined App Submission, App Approval, and App Publishing workflows[span_12](end_span)[span_13](end_span).</li>
+                    [span_14](start_span)[span_15](start_span)<li>Contributed to a no-code/low-code platform in developing a panel to configure draggable elements and their properties[span_14](end_span)[span_15](end_span).</li>
+                    [span_16](start_span)[span_17](start_span)<li>Designed and Implemented the approach to integrate individual blocks into the page, which are already designed using the platform[span_16](end_span)[span_17](end_span).</li>
+                    [span_18](start_span)[span_19](start_span)<li>Received Multiple awards for exceptional contribution to the platform development[span_18](end_span)[span_19](end_span).</li>
                 </ul>
             </div>
 
             <div class="job-card">
                 <h3>Digital Specialist Engineer</h3>
                 <p class="company">Infosys Ltd.</p>
-                [span_13](start_span)<p class="dates">Nov 2020 - Dec 2021[span_13](end_span)</p>
+                [span_20](start_span)[span_21](start_span)<p class="dates">Nov 2020 - Dec 2021[span_20](end_span)[span_21](end_span)</p>
                 <ul>
-                    [span_14](start_span)<li>Contributed to a no-code/low-code platform.[span_14](end_span)</li>
-                    [span_15](start_span)<li>Designed user flows for adding, removing users, creating groups, and defining rules and privileges for groups and individual users.[span_15](end_span)</li>
-                    [span_16](start_span)<li>Implemented dynamic theme customization based on user input.[span_16](end_span)</li>
-                    [span_17](start_span)<li>Managed font import functionality and applied custom fonts, using AWS S3 for storage.[span_17](end_span)</li>
-                    [span_18](start_span)<li>Ensured ADA compliance for the application.[span_18](end_span)</li>
-                    [span_19](start_span)<li>Received Multiple awards for exceptional contribution to the platform.[span_19](end_span)</li>
+                    [span_22](start_span)[span_23](start_span)<li>Contributed for no code/low code platform[span_22](end_span)[span_23](end_span).</li>
+                    [span_24](start_span)[span_25](start_span)<li>Designed userflows for adding, removing users, creating groups, and defining rules and privileges for groups and individual users[span_24](end_span)[span_25](end_span).</li>
+                    [span_26](start_span)[span_27](start_span)<li>Implemented dynamic theme customization based on user input[span_26](end_span)[span_27](end_span).</li>
+                    [span_28](start_span)[span_29](start_span)<li>Managed font import functionality and applied custom fonts, used AWS S3 for storing those fonts[span_28](end_span)[span_29](end_span).</li>
+                    [span_30](start_span)[span_31](start_span)<li>Ensured ADA compliance for the application[span_30](end_span)[span_31](end_span).</li>
+                    [span_32](start_span)[span_33](start_span)<li>Received Multiple awards for exceptional contribution to platform[span_32](end_span)[span_33](end_span).</li>
                 </ul>
             </div>
 
             <div class="job-card">
                 <h3>Game Programmer - Intern</h3>
                 <p class="company">Andhra Pradesh State Skill Development Corporation (APSSDC)</p>
-                [span_20](start_span)<p class="dates">Jun 2018 - Jul 2018[span_20](end_span)</p>
+                <p class="dates">Jun 2018 - Jul 2018</p>
                 <ul>
-                    [span_21](start_span)<li>Participated in a six-week IGDC (Indian Game Development Challenge) Summer Internship - 2018 organized in association with KAMK University, Finland.[span_21](end_span)</li>
-                    [span_22](start_span)<li>Developed an endless running game called NOTERIDE, using Unity 3D application.[span_22](end_span)</li>
-                    [span_23](start_span)<li>Received credit score for the participation.[span_23](end_span)</li>
+                    [span_34](start_span)[span_35](start_span)<li>Participated in a six-week IGDC (Indian Game Development Challenge) Summer Internship - 2018 organized in association with KAMK University, Finland[span_34](end_span)[span_35](end_span).</li>
+                    [span_36](start_span)[span_37](start_span)<li>Developed an endless running game called NOTERIDE, using Unity 3D application[span_36](end_span)[span_37](end_span).</li>
+                    [span_38](start_span)[span_39](start_span)<li>Received credit score for the participation[span_38](end_span)[span_39](end_span).</li>
                 </ul>
             </div>
         </section>
 
-        <section id="skills" class="fade-in">
+        <section id="skills" class="gsap-fade-in">
             <h2>Skills</h2>
-            <div class="skills-grid">
-                <div class="skill-category">
-                    <h3>Front-End</h3>
-                    <ul>
-                        <li>HTML</li>
-                        <li>CSS</li>
-                        <li>JavaScript</li>
-                        <li>TypeScript</li>
-                        <li>Angular</li>
-                        <li>ReactJs</li>
-                        <li>NextJs</li>
-                        <li>SCSS</li>
-                    </ul>
-                </div>
-                <div class="skill-category">
-                    <h3>Back-End</h3>
-                    <ul>
-                        <li>NodeJs</li>
-                        <li>ExpressJs</li>
-                        <li>NestJs</li>
-                        <li>Python</li>
-                    </ul>
-                </div>
-                <div class="skill-category">
-                    <h3>Database</h3>
-                    <ul>
-                        <li>MongoDB</li>
-                        <li>MySQL</li>
-                    </ul>
-                </div>
-                <div class="skill-category">
-                    <h3>Tools</h3>
-                    <ul>
-                        <li>Git</li>
-                        <li>Jira</li>
-                        <li>Instana</li>
-                        <li>MongoDB Atlas</li>
-                        <li>AWS S3</li>
-                        <li>Unity 3D</li>
-                        <li>Strapi</li>
-                        <li>Contentful</li>
-                    </ul>
-                </div>
-            </div>
+            <div id="d3-skills-visualization"></div> <p class="skills-note">Hover over skill nodes for a subtle effect, and drag them around!</p>
         </section>
 
-        <section id="projects" class="slide-up">
+        <section id="projects">
             <h2>Projects</h2>
             <div class="project-grid">
                 <div class="project-card">
                     <h3>App Marketplaces</h3>
-                    [span_24](start_span)<p>Developed full-stack app marketplaces with micro-frontend and microservice architectures.[span_24](end_span)</p>
+                    [span_40](start_span)[span_41](start_span)<p>Developed full-stack app marketplaces with micro-frontend and microservice architectures[span_40](end_span)[span_41](end_span).</p>
                     <a href="#" class="btn-secondary" target="_blank">View Details</a>
                 </div>
                 <div class="project-card">
                     <h3>No-Code/Low-Code Platform Contributions</h3>
-                    [span_25](start_span)[span_26](start_span)<p>Contributed significantly to the development of a no-code/low-code platform, including configurable draggable elements and integration approaches.[span_25](end_span)[span_26](end_span)</p>
+                    [span_42](start_span)[span_43](start_span)[span_44](start_span)[span_45](start_span)<p>Contributed significantly to the development of a no-code/low-code platform, including configurable draggable elements and integration approaches[span_42](end_span)[span_43](end_span)[span_44](end_span)[span_45](end_span).</p>
                     <a href="#" class="btn-secondary" target="_blank">View Details</a>
                 </div>
                 <div class="project-card">
                     <h3>Dynamic Theme & Font Customization</h3>
-                    [span_27](start_span)<p>Implemented dynamic theme customization and managed custom font imports using AWS S3.[span_27](end_span)</p>
+                    [span_46](start_span)[span_47](start_span)<p>Implemented dynamic theme customization and managed custom font imports using AWS S3[span_46](end_span)[span_47](end_span).</p>
                     <a href="#" class="btn-secondary" target="_blank">View Details</a>
                 </div>
                  <div class="project-card">
                     <h3>NOTERIDE (Game Development)</h3>
-                    [span_28](start_span)<p>Developed an endless running game, NOTERIDE, using Unity 3D during an internship.[span_28](end_span)</p>
+                    [span_48](start_span)[span_49](start_span)<p>Developed an endless running game, NOTERIDE, using Unity 3D during an internship[span_48](end_span)[span_49](end_span).</p>
                     <a href="#" class="btn-secondary" target="_blank">View Details</a>
                 </div>
                 </div>
         </section>
 
-        <section id="education" class="fade-in">
+        <section id="education" class="gsap-fade-in">
             <h2>Education</h2>
             <div class="education-card">
                 <h3>B.Tech, Computer Science</h3>
                 <p class="university">Jawaharlal Nehru Technological University</p>
-                [span_29](start_span)<p class="dates">2016-2020[span_29](end_span)</p>
-                [span_30](start_span)<p>GPA: 8.4[span_30](end_span)</p>
+                <p class="dates">2016-2020</p>
+                <p>GPA: 8.4</p>
             </div>
         </section>
 
-        <section id="contact" class="slide-up">
+        <section id="contact" class="gsap-fade-in">
             <h2>Get in Touch</h2>
             <p>I'm always open to new opportunities and collaborations. Feel free to reach out!</p>
             <div class="contact-info">
@@ -182,7 +144,7 @@
                 <p><i class="fas fa-phone"></i> +91 9533601152</p>
                 <p><i class="fab fa-linkedin"></i> <a href="https://www.linkedin.com/in/karthikbalabhadrapatruni" target="_blank">linkedin.com/in/karthikbalabhadrapatruni</a></p>
             </div>
-            </section>
+        </section>
     </main>
 
     <footer>
